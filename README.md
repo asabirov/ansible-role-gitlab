@@ -128,6 +128,15 @@ If you want to insert custom NGINX settings into the GitLab server block
         proxy_pass  http://gitlab-workhorse;
      }
 
+If you want to add [omniauth providers](https://docs.gitlab.com/ee/integration/bitbucket.html#bitbucket-omniauth-provider)
+
+    gitlab_omniauth_providers: |
+      {
+        "name" => "bitbucket",
+        "app_id" => "BITBUCKET_APP_KEY",
+        "app_secret" => "BITBUCKET_APP_SECRET",
+        "url" => "https://bitbucket.org/"
+      }
 
 ## Dependencies
 
