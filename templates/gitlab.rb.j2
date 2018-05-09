@@ -71,5 +71,18 @@ nginx['ssl_client_certificate'] = "{{ gitlab_nginx_ssl_client_certificate }}"
 # Inserting custom NGINX settings into the GitLab server block
 nginx['custom_gitlab_server_config'] ="{{ gitlab_custom_server_config | replace('\n', '\\n') }}"
 
+# Gitlab Registry (See https://gitlab.com/help/administration/container_registry.md)
+
+{% if gitlab_registry_external_url is defined %}
+registry_external_url "{{ gitlab_registry_external_url }}"
+{% if gitlab_registry_ssl_certificate is defined %}
+registry_nginx['ssl_certificate'] = "{{ gitlab_registry_ssl_certificate }}"
+registry_nginx['ssl_certificate_key'] = "{{ gitlab_registry_ssl_certificate_key }}"
+{% else %}
+registry_nginx['ssl_certificate'] = "{{ gitlab_ssl_certificate }}"
+registry_nginx['ssl_certificate_key'] = "{{ gitlab_ssl_certificate_key }}"
+{% endif %}
+{% endif %}
+
 # To change other settings, see:
 # https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md#changing-gitlab-yml-settings
