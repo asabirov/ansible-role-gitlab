@@ -39,6 +39,7 @@ gitlab_smtp_tls: "false"
 gitlab_smtp_openssl_verify_mode: "none"
 gitlab_smtp_ca_path: "/etc/ssl/certs"
 gitlab_smtp_ca_file: "/etc/ssl/certs/ca-certificates.crt"
+gitlab_omniauth_sync_profile_attributes: "['email']"
 
 # 2-way SSL Client Authentication support.
 gitlab_nginx_ssl_verify_client: ""
