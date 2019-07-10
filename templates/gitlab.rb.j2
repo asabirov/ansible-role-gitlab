@@ -44,6 +44,10 @@ gitlab_rails['omniauth_sync_profile_attributes'] = ['email']
 gitlab_rails['omniauth_auto_link_saml_user'] = true
 gitlab_rails['omniauth_providers'] = [{{ gitlab_omniauth_providers }}]
 
+{% if gitlab_omniauth_auto_sign_in_with_provider is defined %}
+gitlab_rails['gitlab_omniauth_auto_sign_in_with_provider'] = "{{ gitlab_omniauth_auto_sign_in_with_provider }}"
+{% endif %}
+
 # GitLab Nginx
 ## See https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/settings/nginx.md
 {% if gitlab_nginx_listen_port is defined %}
